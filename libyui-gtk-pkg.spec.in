@@ -16,8 +16,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
 BuildRequires:  libyui-devel
 BuildRequires:  gtk3-devel
-Provides:	yui_backend
 
+%define libyui_gtk_devel_version libyui-gtk-devel >= 2.42.0
+BuildRequires:  %{libyui_gtk_devel_version}
+%define libzypp_devel_version           libzypp-devel >= 11.4.0
+BuildRequires:  %{libzypp_devel_version}
 
 URL:        @URL@
 Summary:    @SUMMARY@
@@ -30,9 +33,9 @@ Summary:    @SUMMARY@
 Group:      System/Libraries
 
 Requires:   lib@BASELIB@@SONAME_MAJOR@
-Provides:   lib@BASELIB@-ncurses = %{version}
-Provides:   yast2-gtk = %{version}
-Obsoletes:  yast2-gtk < %{version}
+Provides:   lib@BASELIB@-gtk = %{version}
+Provides:   yast2-gtk-pkg = %{version}
+Obsoletes:  yast2-gtk-pkg < %{version}
 
 URL:        @URL@
 Summary:    @SUMMARY@
