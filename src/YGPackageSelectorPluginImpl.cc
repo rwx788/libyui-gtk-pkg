@@ -2,7 +2,7 @@
  *           YaST2-GTK - http://en.opensuse.org/YaST2-GTK           *
  ********************************************************************/
 
-#include "pkg/YGPackageSelectorPluginImpl.h"
+#include "YGPackageSelectorPluginImpl.h"
 
 extern "C"
 {

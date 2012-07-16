@@ -165,7 +165,7 @@ importSelectable( ZyppSel		selectable,
 	    case S_Del:
 	    case S_AutoDel:
 		newStatus = S_KeepInstalled;
-		yuiDebug() << "Keeping " << kind << " " << selectable->name() << endl;
+		yuiDebug() << "Keeping " << kind << " " << selectable->name() << std::endl;
 		break;
 
 	    case S_NoInst:
@@ -174,12 +174,12 @@ importSelectable( ZyppSel		selectable,
 		if ( selectable->hasCandidateObj() )
 		{
 		    newStatus = S_Install;
-		    yuiDebug() << "Adding " << kind << " " <<  selectable->name() << endl;
+		    yuiDebug() << "Adding " << kind << " " <<  selectable->name() << std::endl;
 		}
 		else
 		{
 		    yuiDebug() << "Can't add " << kind << " " << selectable->name()
-			       << ": No candidate" << endl;
+			       << ": No candidate" << std::endl;
 		}
 		break;
 	}
@@ -199,7 +199,7 @@ importSelectable( ZyppSel		selectable,
 	    case S_Update:
 	    case S_AutoUpdate:
 		newStatus = S_Del;
-		yuiDebug() << "Deleting " << kind << " " << selectable->name() << endl;
+		yuiDebug() << "Deleting " << kind << " " << selectable->name() << std::endl;
 		break;
 
 	    case S_Del:
@@ -238,7 +238,7 @@ static void import_file_cb (GtkMenuItem *item)
     if ( ret == GTK_RESPONSE_ACCEPT )
     {
 	char *filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
-	yuiMilestone() << "Importing package list from " << filename << endl;
+	yuiMilestone() << "Importing package list from " << filename << std::endl;
 
 	try
 	{
@@ -250,16 +250,16 @@ static void import_file_cb (GtkMenuItem *item)
 	    //
 
 	    typedef zypp::syscontent::Reader::Entry	ZyppReaderEntry;
-	    typedef std::pair<string, ZyppReaderEntry>	ImportMapPair;
+	    typedef std::pair<std::string, ZyppReaderEntry>	ImportMapPair;
 
-	    map<string, ZyppReaderEntry> importPkg;
-	    map<string, ZyppReaderEntry> importPatterns;
+	    std::map<std::string, ZyppReaderEntry> importPkg;
+	    std::map<std::string, ZyppReaderEntry> importPatterns;
 
 	    for ( zypp::syscontent::Reader::const_iterator it = reader.begin();
 		  it != reader.end();
 		  ++ it )
 	    {
-		string kind = it->kind();
+		std::string kind = it->kind();
 
 		if      ( kind == "package" ) 	importPkg.insert     ( ImportMapPair( it->name(), *it ) );
 		else if ( kind == "pattern" )	importPatterns.insert( ImportMapPair( it->name(), *it ) );
@@ -268,7 +268,7 @@ static void import_file_cb (GtkMenuItem *item)
 	    yuiDebug() << "Found "        << importPkg.size()
 		       <<" packages and " << importPatterns.size()
 		       << " patterns in " << filename
-		       << endl;
+		       << std::endl;
 
 
 	    //
@@ -295,7 +295,7 @@ static void import_file_cb (GtkMenuItem *item)
 	}
 	catch (const zypp::Exception & exception)
 	{
-	    yuiWarning() << "Error reading package list from " << filename << endl;
+	    yuiWarning() << "Error reading package list from " << filename << std::endl;
 	    std::string str (_("Could not open:"));
 	    str += " "; str += filename;
 		errorMsg (str);
@@ -356,11 +356,11 @@ static void export_file_cb (GtkMenuItem *item)
 	    exportFile.exceptions( std::ios_base::badbit | std::ios_base::failbit );
 	    exportFile << writer;
 
-	    yuiMilestone() << "Package list exported to " << filename << endl;
+	    yuiMilestone() << "Package list exported to " << filename << std::endl;
 	}
 	catch ( std::exception & exception )
 	{
-	    yuiWarning() << "Error exporting package list to " << filename << endl;
+	    yuiWarning() << "Error exporting package list to " << filename << std::endl;
 
 	    // The export might have left over a partially written file.
 	    // Try to delete it. Don't care if it doesn't exist and unlink() fails.
@@ -396,9 +396,9 @@ static void create_solver_testcase_cb (GtkMenuItem *item)
 
 	if (ret == GTK_RESPONSE_OK) {
 		bool success;
-		yuiMilestone() << "Generating solver test case START" << endl;
+		yuiMilestone() << "Generating solver test case START" << std::endl;
 		success = zypp::getZYpp()->resolver()->createSolverTestcase (dirname);
-		yuiMilestone() << "Generating solver test case END" << endl;
+		yuiMilestone() << "Generating solver test case END" << std::endl;
 
 	    if (success) {
 			GtkWidget *dialog = gtk_message_dialog_new (YGDialog::currentWindow(),
@@ -427,19 +427,19 @@ static void create_solver_testcase_cb (GtkMenuItem *item)
 
 static void repoManager()
 {
-    yuiMilestone() << "Closing PackageSelector with \"RepoManager\"" << endl;
+    yuiMilestone() << "Closing PackageSelector with \"RepoManager\"" << std::endl;
     YGUI::ui()->sendEvent( new YMenuEvent( "repo_mgr" ) );
 }
 
 static void onlineUpdateConfiguration()
 {
-    yuiMilestone() << "Closing PackageSelector with \"OnlineUpdateConfiguration\"" << endl;
+    yuiMilestone() << "Closing PackageSelector with \"OnlineUpdateConfiguration\"" << std::endl;
     YGUI::ui()->sendEvent( new YMenuEvent( "online_update_configuration" ) );
 }
 
 static void webpinSearch()
 {
-    yuiMilestone() << "Closing PackageSelector with \"webpin\"" << endl;
+    yuiMilestone() << "Closing PackageSelector with \"webpin\"" << std::endl;
     YGUI::ui()->sendEvent( new YMenuEvent( "webpin" ) );
 }
 
@@ -592,7 +592,7 @@ static void installSubPkgs (std::string suffix)
 	if (YGUtils::endsWith (name, suffix))
 	{
 	    subPkgs[ name ] = *it;
-	    yuiDebug() << "Found subpackage: " << name << endl;
+	    yuiDebug() << "Found subpackage: " << name << std::endl;
 	}
     }
 
@@ -616,7 +616,7 @@ static void installSubPkgs (std::string suffix)
 		case S_Taboo:
 		case S_Del:
 		    // Don't install the subpackage
-		    yuiMilestone() << "Ignoring unwanted subpackage " << subPkgName << endl;
+		    yuiMilestone() << "Ignoring unwanted subpackage " << subPkgName << std::endl;
 		    break;
 
 		case S_AutoInstall:
@@ -628,7 +628,7 @@ static void installSubPkgs (std::string suffix)
 		    if ( ! subPkg->installedObj() )
 		    {
 			subPkg->setStatus( S_Install );
-			yuiMilestone() << "Installing subpackage " << subPkgName << endl;
+			yuiMilestone() << "Installing subpackage " << subPkgName << std::endl;
 		    }
 		    break;
 
@@ -641,12 +641,12 @@ static void installSubPkgs (std::string suffix)
 		    if ( ! subPkg->installedObj() )
 		    {
 			subPkg->setStatus( S_Install );
-			yuiMilestone() << "Installing subpackage " << subPkgName << endl;
+			yuiMilestone() << "Installing subpackage " << subPkgName << std::endl;
 		    }
 		    else
 		    {
 			subPkg->setStatus( S_Update );
-			yuiMilestone() << "Updating subpackage " << subPkgName << endl;
+			yuiMilestone() << "Updating subpackage " << subPkgName << std::endl;
 		    }
 		    break;
 
@@ -740,8 +740,11 @@ YGtkPkgMenuBar::YGtkPkgMenuBar()
 			new ShowDebugCheckItem (submenu, _("Show -&debuginfo/-debugsource Packages"), &flags);
 			new SystemVerificationCheckItem (submenu, _("&System Verification Mode"), &flags);
 			new IgnoreAlreadyRecommendedCheckItem (submenu, _("&Ignore recommended packages for already installed packages"), &flags);
+
+#if ZYPP_VERSION > 6031004
 			new CleanupDepsCheckItem (submenu, _("&Cleanup when deleting packages"), &flags);
 			new AllowVendorChangeCheckItem (submenu, _("&Allow vendor change"), &flags);
+#endif
 	}
 
 	item = append_menu_item (menu_bar, _("E&xtras"), NULL, NULL, NULL);

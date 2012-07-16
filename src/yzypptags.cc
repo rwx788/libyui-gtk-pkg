@@ -128,8 +128,8 @@ zypp_tag_convert (const std::string &groupu)
     if (group.compare (0, 10, "system/gui") == 0) return YPKG_GROUP_DESKTOP_OTHER;
     if (group.compare (0, 8, "hardware") == 0) return YPKG_GROUP_SYSTEM;
     if (group.compare (0, 6, "system") == 0) return YPKG_GROUP_SYSTEM;
-    if (group.find ("scientific") != string::npos) return YPKG_GROUP_EDUCATION;
-    if (group.find ("multimedia") != string::npos) return YPKG_GROUP_MULTIMEDIA;
+    if (group.find ("scientific") != std::string::npos) return YPKG_GROUP_EDUCATION;
+    if (group.find ("multimedia") != std::string::npos) return YPKG_GROUP_MULTIMEDIA;
 
 	// our own:
     if (group.compare (0, 13, "documentation") == 0) return YPKG_GROUP_DOCUMENTATION;

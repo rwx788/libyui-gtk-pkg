@@ -821,7 +821,7 @@ bool YGPackageSelector::yield()
 	return id != _id;
 }
 
-#include "pkg/YGPackageSelectorPluginImpl.h"
+#include "YGPackageSelectorPluginImpl.h"
 
 YPackageSelector *
 YGPackageSelectorPluginImpl::createPackageSelector (YWidget *parent, long modeFlags)

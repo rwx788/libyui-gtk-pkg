@@ -198,7 +198,7 @@ static int read_PKGMGR_ACTION_AT_EXIT()
 	std::map <std::string, std::string>::const_iterator it =
 		sysconfig.find("PKGMGR_ACTION_AT_EXIT");
 	if (it != sysconfig.end()) {
-		yuiMilestone() << "Read sysconfig's action at pkg mgr exit value: " << it->second << endl;
+		yuiMilestone() << "Read sysconfig's action at pkg mgr exit value: " << it->second << std::endl;
 		std::string mode (it->second);
 		if (mode == "restart")
 			return RESTART_MODE;
@@ -207,7 +207,7 @@ static int read_PKGMGR_ACTION_AT_EXIT()
 		else //if (mode == "close")
 			return CLOSE_MODE;
 	}
-	yuiMilestone() << "Could not read PKGMGR_ACTION_AT_EXIT variable from sysconfig" << endl;
+	yuiMilestone() << "Could not read PKGMGR_ACTION_AT_EXIT variable from sysconfig" << std::endl;
 	return false;
 }
 
@@ -221,10 +221,10 @@ static void write_PKGMGR_ACTION_AT_EXIT (int mode)
 		case SUMMARY_MODE: _mode = "summary"; break;
 	}
 	int ret = -1;
-	string cmd = "sed -i 's/^[ \t]*PKGMGR_ACTION_AT_EXIT.*$/PKGMGR_ACTION_AT_EXIT=\"" +
+	std::string cmd = "sed -i 's/^[ \t]*PKGMGR_ACTION_AT_EXIT.*$/PKGMGR_ACTION_AT_EXIT=\"" +
 		_mode + "\"/' " + YAST_SYSCONFIG;
 	ret  = system(cmd.c_str());
-	yuiMilestone() << "Executing system cmd " << cmd << " returned " << ret << endl;
+	yuiMilestone() << "Executing system cmd " << cmd << " returned " << ret << std::endl;
 }
 
 static void close_when_done_toggled_cb (GtkToggleButton *button)
