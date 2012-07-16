@@ -180,7 +180,7 @@ static gboolean fill_list_idle_cb (void *data)
 	impl->view->setList (list);
 
 	gtk_widget_hide (impl->progressbar);
-	gdk_window_set_cursor (impl->dialog->window, NULL);
+// FIXME	gdk_window_set_cursor (impl->dialog->window, NULL);
 	gtk_dialog_set_response_sensitive (GTK_DIALOG (impl->dialog), 2, unneeded.size());
 	gtk_window_present (GTK_WINDOW (impl->dialog));
 	return FALSE;
@@ -229,7 +229,7 @@ YGtkPkgVestigialDialog::YGtkPkgVestigialDialog()
 	impl->dialog = dialog;
 
 	GdkCursor *cursor = gdk_cursor_new (GDK_WATCH);
-	gdk_window_set_cursor (dialog->window, cursor);
+// FIXME	gdk_window_set_cursor (dialog->window, cursor);
 	gdk_cursor_unref (cursor);
 
 	g_idle_add_full (G_PRIORITY_LOW, fill_list_idle_cb, impl, NULL);

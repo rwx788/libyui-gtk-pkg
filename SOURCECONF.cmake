@@ -19,6 +19,9 @@ ygtkpkgvestigialdialog.cc
 ygtktreemodel.cc
 yzypptags.cc
 yzyppwrapper.cc
+ygtkcellrendererbutton.c 
+ygtkcellrenderersidebutton.c
+ygtkcellrenderertext.c
 )
 
 SET( ${TARGETLIB}_HEADERS
