@@ -49,6 +49,7 @@ Requires:   lib@BASELIB@@SONAME_MAJOR@
 Provides:   lib@BASELIB@-gtk = %{version}
 Provides:   yast2-gtk-pkg = %{version}
 Obsoletes:  yast2-gtk-pkg < %{version}
+Provides:   libyui_pkg
 
 URL:        @URL@
 Summary:    @SUMMARY@
