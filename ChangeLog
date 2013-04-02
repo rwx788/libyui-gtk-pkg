@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  2 12:16:25 CEST 2013 - tgoettlicher@suse.de
+
+- Applied patch by Yasuhiko Kamata (#bnc 786650)
+- Version 2.42.3
+
+-------------------------------------------------------------------
 Wed Dec 12 10:57:27 CET 2012 - ma@suse.de
 
 - Interim continue using deprecated history reader API
