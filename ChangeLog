@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  2 10:19:52 CEST 2013 - tgoettlicher@suse.de
+
+- Fixed translation (bnc#721389)
+- Version 2.42.4
+
+-------------------------------------------------------------------
 Tue Apr  2 12:16:25 CEST 2013 - tgoettlicher@suse.de
 
 - Applied patch by Yasuhiko Kamata (#bnc 786650)
