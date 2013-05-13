@@ -235,7 +235,7 @@ struct ZyppHistoryParser
 	ZyppHistoryParser (Handler *handler)
 	: handler (handler)
 	{
-		zypp::parser::HistoryLogReader parser (FILENAME, boost::ref (*this));
+		zypp::parser::HistoryLogReader parser (FILENAME, zypp::parser::HistoryLogReader::Options(), boost::ref (*this));
 		try {
 			parser.readAll();
 		}
@@ -245,9 +245,9 @@ struct ZyppHistoryParser
 		}
 	}
 
-	bool operator() (const zypp::HistoryItem::Ptr &item)
+	bool operator() (const zypp::HistoryLogData::Ptr &item)
 	{
-		std::string date (item->date.form ("%d %B %Y"));
+		std::string date (item->date().form ("%d %B %Y"));
 		if (_date != date) {
 			handler->date (date, _date.empty());
 			_date = date;
@@ -255,18 +255,18 @@ struct ZyppHistoryParser
 
 		std::string action, name, descrpt, repoName, repoUrl, reqby, t;
 		bool autoreq = false;
-		switch (item->action.toEnum()) {
+		switch (item->action().toEnum()) {
 			case zypp::HistoryActionID::NONE_e:
 				break;
 			case zypp::HistoryActionID::INSTALL_e: {
-				zypp::HistoryItemInstall *_item =
-					static_cast <zypp::HistoryItemInstall *> (item.get());
-				name = _item->name;
-				descrpt = _item->edition.version();
-				Ypp::getRepositoryFromAlias (_item->repoalias, repoName, repoUrl);
-				reqby = _item->reqby; autoreq = reqby.empty();
+				zypp::HistoryLogDataInstall *_item =
+					static_cast <zypp::HistoryLogDataInstall *> (item.get());
+				name = _item->name();
+				descrpt = _item->edition().version();
+				Ypp::getRepositoryFromAlias (_item->repoAlias(), repoName, repoUrl);
+				reqby = _item->reqby(); autoreq = reqby.empty();
 				reqby = reqbyTreatment (reqby);
-				zypp::Edition edition = _item->edition;
+				zypp::Edition edition = _item->edition();
 				std::map <std::string, zypp::Edition>::iterator it;
 				it = installed.find (name);
 				if (it == installed.end())
@@ -284,12 +284,12 @@ struct ZyppHistoryParser
 				break;
 			}
 			case zypp::HistoryActionID::REMOVE_e: {
-				zypp::HistoryItemRemove *_item =
-					static_cast <zypp::HistoryItemRemove *> (item.get());
+				zypp::HistoryLogDataRemove *_item =
+					static_cast <zypp::HistoryLogDataRemove *> (item.get());
 				action = _("remove");
-				name = _item->name;
-				descrpt = _item->edition.version();
-				reqby = _item->reqby; autoreq = reqby.empty();
+				name = _item->name();
+				descrpt = _item->edition().version();
+				reqby = _item->reqby(); autoreq = reqby.empty();
 				reqby = reqbyTreatment (reqby);
 				std::map <std::string, zypp::Edition>::iterator it;
 				it = installed.find (name);
@@ -298,33 +298,33 @@ struct ZyppHistoryParser
 				break;
 			}
 			case zypp::HistoryActionID::REPO_ADD_e: {
-				zypp::HistoryItemRepoAdd *_item =
-					static_cast <zypp::HistoryItemRepoAdd *> (item.get());
+				zypp::HistoryLogDataRepoAdd *_item =
+					static_cast <zypp::HistoryLogDataRepoAdd *> (item.get());
 				action = _("add repository");
-				Ypp::getRepositoryFromAlias (_item->alias, name, t);
-				descrpt = _item->url.asString();
+				Ypp::getRepositoryFromAlias (_item->alias(), name, t);
+				descrpt = _item->url().asString();
 				break;
 			}
 			case zypp::HistoryActionID::REPO_REMOVE_e: {
-				zypp::HistoryItemRepoRemove *_item =
-					static_cast <zypp::HistoryItemRepoRemove *> (item.get());
+				zypp::HistoryLogDataRepoRemove *_item =
+					static_cast <zypp::HistoryLogDataRepoRemove *> (item.get());
 				action = _("remove repository");
-				name = _item->alias;
+				name = _item->alias();
 				break;
 			}
 			case zypp::HistoryActionID::REPO_CHANGE_ALIAS_e: {
-				zypp::HistoryItemRepoAliasChange *_item =
-					static_cast <zypp::HistoryItemRepoAliasChange *> (item.get());
+				zypp::HistoryLogDataRepoAliasChange *_item =
+					static_cast <zypp::HistoryLogDataRepoAliasChange *> (item.get());
 				action = _("change repository alias");
-				name = _item->oldalias + " -> " + _item->newalias;
+				name = _item->oldAlias() + " -> " + _item->newAlias();
 				break;
 			}
 			case zypp::HistoryActionID::REPO_CHANGE_URL_e: {
-				zypp::HistoryItemRepoUrlChange *_item =
-					static_cast <zypp::HistoryItemRepoUrlChange *> (item.get());
+				zypp::HistoryLogDataRepoUrlChange *_item =
+					static_cast <zypp::HistoryLogDataRepoUrlChange *> (item.get());
 				action = _("change repository url");
-				Ypp::getRepositoryFromAlias (_item->alias, name, t);
-				descrpt = _item->newurl.asString();
+				Ypp::getRepositoryFromAlias (_item->alias(), name, t);
+				descrpt = _item->newUrl().asString();
 				break;
 			}
 		}

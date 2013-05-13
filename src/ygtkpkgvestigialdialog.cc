@@ -26,7 +26,7 @@ struct ZyppVestigialParser
 
 	ZyppVestigialParser()
 	{
-		zypp::parser::HistoryLogReader parser (FILENAME, boost::ref (*this));
+		zypp::parser::HistoryLogReader parser (FILENAME, zypp::parser::HistoryLogReader::Options(), boost::ref (*this));
 		try {
 			parser.readAll();
 		}
@@ -36,16 +36,16 @@ struct ZyppVestigialParser
 		}
 	}
 
-	bool operator() (const zypp::HistoryItem::Ptr &item)
+	bool operator() (const zypp::HistoryLogData::Ptr &item)
 	{
-		if (item->action.toEnum() == zypp::HistoryActionID::INSTALL_e) {
-			zypp::HistoryItemInstall *_item =
-				static_cast <zypp::HistoryItemInstall *> (item.get());
+		if (item->action().toEnum() == zypp::HistoryActionID::INSTALL_e) {
+			zypp::HistoryLogDataInstall *_item =
+				static_cast <zypp::HistoryLogDataInstall *> (item.get());
 
-			const std::string &name (_item->name);
-			bool autoreq = _item->reqby.empty();
+			const std::string &name (_item->name());
+			bool autoreq = _item->reqby().empty();
 			std::string repoName, repoUrl;
-			Ypp::getRepositoryFromAlias (_item->repoalias, repoName, repoUrl);
+			Ypp::getRepositoryFromAlias (_item->repoAlias(), repoName, repoUrl);
 			bool update = repoUrl.find ("update") != std::string::npos;
 
 			if (!update) {  // updates are ambiguous
