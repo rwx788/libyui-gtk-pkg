@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 16 10:06:58 CEST 2013 - ma@suse.de
+
+- No longer use deprecated libzypp APIs
+
+-------------------------------------------------------------------
 Fri May 10 10:40:00 UTC 2013 - bjoern.esser@gmail.com
 
 - use a common toplevel CMakeLists.txt
