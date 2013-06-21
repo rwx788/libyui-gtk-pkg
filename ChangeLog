@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 21 12:40:20 CEST 2013 - tgoettlicher@suse.de
+
+- Fixed exiting without committing updates (bnc#824289)
+- Version 2.42.5
+
+-------------------------------------------------------------------
 Thu May  2 10:19:52 CEST 2013 - tgoettlicher@suse.de
 
 - Fixed translation (bnc#721389)
