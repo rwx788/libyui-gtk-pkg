@@ -1,4 +1,8 @@
--------------------------------------------------------------------
+Fri Jun 21 12:40:20 CEST 2013 - tgoettlicher@suse.de
+
+- Fixed exiting without committing updates (bnc#824289)
+
+------------------------------------------------------------------
 Thu May 16 10:06:58 CEST 2013 - ma@suse.de
 
 - No longer use deprecated libzypp APIs

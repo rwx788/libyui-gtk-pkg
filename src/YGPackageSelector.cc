@@ -746,7 +746,7 @@ void YGPackageSelector::cancel()
 
 void YGPackageSelector::apply()
 {
-	if (!Ypp::runSolver()) return;  // final dependencies check
+	if (!Ypp::runSolver(true)) return;  // final dependencies check
 	if (onlineUpdateMode())
 		if (!Ypp::showPendingLicenses (Ypp::Selectable::PATCH)) return;
 	if (!Ypp::showPendingLicenses (Ypp::Selectable::PACKAGE)) return;
