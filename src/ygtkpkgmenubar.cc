@@ -437,12 +437,6 @@ static void onlineUpdateConfiguration()
     YGUI::ui()->sendEvent( new YMenuEvent( "online_update_configuration" ) );
 }
 
-static void webpinSearch()
-{
-    yuiMilestone() << "Closing PackageSelector with \"webpin\"" << std::endl;
-    YGUI::ui()->sendEvent( new YMenuEvent( "webpin" ) );
-}
-
 static void manualResolvePackageDependencies()
 { Ypp::runSolver (true); }
 
@@ -721,9 +715,6 @@ YGtkPkgMenuBar::YGtkPkgMenuBar()
 			if (selector->onlineUpdateMode())
 				append_menu_item (submenu, _("&Online Update..."), NULL,
 					G_CALLBACK (onlineUpdateConfiguration), this);
-			else
-				append_menu_item (submenu, _("Search Packages on &Web..."), NULL,
-					G_CALLBACK (webpinSearch), this);
 	}
 	item = append_menu_item (menu_bar, _("&Dependencies"), NULL, NULL, NULL);
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (item), (submenu = gtk_menu_new()));
