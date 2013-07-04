@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  4 13:54:03 CEST 2013 - tgoettlicher@suse.de
+
+- Fix undefined zypp version (bnc#811209)
+- Version 2.42.9
+
+-------------------------------------------------------------------
 Wed Jun 26 11:55:18 CEST 2013 - tgoettlicher@suse.de
 
 - Removed webpin search (bnc#821866)
