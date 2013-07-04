@@ -25,7 +25,7 @@ ygtkcellrenderertext.c
 )
 
 SET( ${TARGETLIB}_HEADERS
-config.h
+config.h.cmake
 YGPackageSelector.h
 YGPackageSelectorPluginImpl.h
 ygtkcellrendererbutton.h
