@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jan  8 22:06:52 CET 2014 - mvidner@suse.com
+
+- adjusted to libyui so version 6
+- 2.43.0
+
+-------------------------------------------------------------------
 Thu Jul  4 13:54:03 CEST 2013 - tgoettlicher@suse.de
 
 - Fix undefined zypp version (bnc#811209)
