@@ -48,6 +48,7 @@ Provides:       lib@BASELIB@-gtk-pkg = %{version}
 Provides:       yast2-gtk-pkg = %{version}
 Obsoletes:      yast2-gtk-pkg < %{version}
 Provides:       libyui_pkg
+Supplements:    packageand(libyui-gtk:yast2-packager)
 
 Url:            @URL@
 Summary:        @SUMMARY@

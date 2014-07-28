@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 28 12:25:34 UTC 2014 - mvidner@suse.com
+
+- Recommend this package when yast2-packager and libyui-gtk are
+  installed (bnc#888300)
+- 2.43.1
+
+-------------------------------------------------------------------
 Wed Jan  8 22:06:52 CET 2014 - mvidner@suse.com
 
 - adjusted to libyui so version 6
