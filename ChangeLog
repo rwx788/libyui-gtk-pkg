@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 28 22:19:00 CEST 2014 - dimstar@opensuse.org
+
+- Use gvfs-open in place of gnome-open (bnc#881393).
+- 2.43.2
+
+-------------------------------------------------------------------
 Mon Jul 28 12:25:34 UTC 2014 - mvidner@suse.com
 
 - Recommend this package when yast2-packager and libyui-gtk are
