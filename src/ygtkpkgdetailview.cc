@@ -22,7 +22,7 @@
 #include <YStringTree.h>
 
 #define BROWSER_BIN "/usr/bin/firefox"
-#define GNOME_OPEN_BIN "/usr/bin/gnome-open"
+#define GNOME_OPEN_BIN "/usr/bin/gvfs-open"
 
 static std::string onlyInstalledMsg() {
 	std::string s ("<i>");
@@ -874,7 +874,7 @@ struct FilelistExpander : public DetailExpander {
 
 	static void dirname_pressed_cb (GtkWidget *text, const gchar *link, FilelistExpander *pThis)
 	{
-		gchar *cmd = g_strdup_printf (GNOME_OPEN_BIN " %s &", link);
+		gchar *cmd = g_strdup_printf (GNOME_OPEN_BIN " '%s' &", link);
 		(void) system (cmd);
 		g_free (cmd);
 	}
