@@ -1,5 +1,5 @@
 #
-# spec file for package @PROJECTNAME@
+# spec file for package libyui-gtk-pkg
 #
 # Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
@@ -16,10 +16,10 @@
 #
 
 
-Name:           @PROJECTNAME@
-Version:        @VERSION@
+Name:           libyui-gtk-pkg
+Version:        2.43.2
 Release:        0
-Source:         @PROJECTNAME@-%{version}.tar.bz2
+Source:         libyui-gtk-pkg-%{version}.tar.bz2
 
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 2.8
@@ -33,29 +33,33 @@ BuildRequires:  %{libyui_gtk_devel_version}
 %define libzypp_devel_version           libzypp-devel >= 13.0.0
 BuildRequires:  %{libzypp_devel_version}
 
-Url:            @URL@
-Summary:        @SUMMARY@
+Url:            http://github.com/libyui/
+Summary:        Libyui - Gtk Package Selector
 License:        LGPL-2.1 or LGPL-3.0
 Group:          System/Libraries
 
 %description
-@DESCRIPTION@
+This package contains the Gtk package selector
+component for libYUI.
 
-%package -n @PROJECTNAME@@SONAME_MAJOR@
 
-Requires:       lib@BASELIB@@SONAME_MAJOR@
-Provides:       lib@BASELIB@-gtk-pkg = %{version}
+%package -n libyui-gtk-pkg7
+
+Requires:       libyui7
+Provides:       libyui-gtk-pkg = %{version}
 Provides:       yast2-gtk-pkg = %{version}
 Obsoletes:      yast2-gtk-pkg < %{version}
 Provides:       libyui_pkg
 Supplements:    packageand(libyui-gtk:yast2-packager)
 
-Url:            @URL@
-Summary:        @SUMMARY@
+Url:            http://github.com/libyui/
+Summary:        Libyui - Gtk Package Selector
 Group:          System/Libraries
 
-%description -n @PROJECTNAME@@SONAME_MAJOR@
-@DESCRIPTION@
+%description -n libyui-gtk-pkg7
+This package contains the Gtk package selector
+component for libYUI.
+
 
 
 %package devel
@@ -63,21 +67,23 @@ Group:          System/Libraries
 Requires:       boost-devel
 Requires:       glibc-devel
 Requires:       libstdc++-devel
-Requires:       @PROJECTNAME@@SONAME_MAJOR@ = %{version}
+Requires:       libyui-gtk-pkg7 = %{version}
 
-Url:            @URL@
-Summary:        @PROJECTNAME_UC@ header files
+Url:            http://github.com/libyui/
+Summary:        Libyui-gtk-pkg header files
 Group:          Development/Languages/C and C++
 
 %description devel
-@DESCRIPTION@
+This package contains the Gtk package selector
+component for libYUI.
+
 
 This can be used independently of YaST for generic (C++) applications.
 This package has very few dependencies.
 
 
 %prep
-%setup -q -n @PROJECTNAME@-%{version}
+%setup -q -n libyui-gtk-pkg-%{version}
 
 %build
 
@@ -110,30 +116,30 @@ make %{?jobs:-j%jobs}
 %install
 cd build
 make install DESTDIR="$RPM_BUILD_ROOT"
-install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/@PROJECTNAME@@SONAME_MAJOR@/
-install -m0755 -d $RPM_BUILD_ROOT/%{_libdir}/@BASELIB@
-install -m0644 ../COPYING* $RPM_BUILD_ROOT/%{_docdir}/@PROJECTNAME@@SONAME_MAJOR@/
+install -m0755 -d $RPM_BUILD_ROOT/%{_docdir}/libyui-gtk-pkg7/
+install -m0755 -d $RPM_BUILD_ROOT/%{_libdir}/yui
+install -m0644 ../COPYING* $RPM_BUILD_ROOT/%{_docdir}/libyui-gtk-pkg7/
 
 %clean
 rm -rf "$RPM_BUILD_ROOT"
 
-%post -n @PROJECTNAME@@SONAME_MAJOR@ -p /sbin/ldconfig
+%post -n libyui-gtk-pkg7 -p /sbin/ldconfig
 
-%postun -n @PROJECTNAME@@SONAME_MAJOR@ -p /sbin/ldconfig
+%postun -n libyui-gtk-pkg7 -p /sbin/ldconfig
 
-%files -n @PROJECTNAME@@SONAME_MAJOR@
+%files -n libyui-gtk-pkg7
 %defattr(-,root,root)
-%dir %{_libdir}/@BASELIB@
-%{_libdir}/@BASELIB@/lib*.so.*
-%doc %dir %{_docdir}/@PROJECTNAME@@SONAME_MAJOR@
-%doc %{_docdir}/@PROJECTNAME@@SONAME_MAJOR@/COPYING*
+%dir %{_libdir}/yui
+%{_libdir}/yui/lib*.so.*
+%doc %dir %{_docdir}/libyui-gtk-pkg7
+%doc %{_docdir}/libyui-gtk-pkg7/COPYING*
 
 %files devel
 %defattr(-,root,root)
-%dir %{_docdir}/@PROJECTNAME@@SONAME_MAJOR@
-%{_libdir}/@BASELIB@/lib*.so
+%dir %{_docdir}/libyui-gtk-pkg7
+%{_libdir}/yui/lib*.so
 %{_prefix}/include/yui
-%{_libdir}/pkgconfig/@PROJECTNAME@.pc
-%{_libdir}/cmake/@PROJECTNAME@
+%{_libdir}/pkgconfig/libyui-gtk-pkg.pc
+%{_libdir}/cmake/libyui-gtk-pkg
 
 %changelog
