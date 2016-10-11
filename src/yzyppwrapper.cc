@@ -5,7 +5,7 @@
 // check the header file for information about this wrapper
 
 /*
-  Textdomain "gtk"
+  Textdomain "gtk-pkg"
  */
 
 #include "config.h"

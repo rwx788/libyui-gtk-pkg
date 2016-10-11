@@ -1,3 +1,4 @@
+
 /********************************************************************
  *           YaST2-GTK - http://en.opensuse.org/YaST2-GTK           *
  ********************************************************************/
@@ -5,7 +6,7 @@
 // check the header file for information about this widget
 
 /*
-  Textdomain "yast2-gtk"
+  Textdomain "gtk-pkg"
  */
 
 #define YUILogComponent "gtk-pkg"

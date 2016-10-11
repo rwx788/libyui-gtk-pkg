@@ -2,7 +2,7 @@
  *           YaST2-GTK - http://en.opensuse.org/YaST2-GTK           *
  ********************************************************************/
 /*
-  Textdomain "gtk"
+  Textdomain "gtk-pkg"
  */
 
 #include "YGi18n.h"

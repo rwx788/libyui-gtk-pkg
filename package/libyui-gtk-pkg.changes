@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 11 12:21:12 UTC 2016 - cwh@suse.com
+
+- Use own textdomain (gtk-pkg instead of gtk) (bsc#1004050)
+- 2.43.4
+
+-------------------------------------------------------------------
 Wed Sep 16 17:29:23 CEST 2015 - mvidner@suse.com
 
 - Reorganized git for easier tarball creation:
