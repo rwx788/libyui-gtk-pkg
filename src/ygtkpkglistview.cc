@@ -5,7 +5,7 @@
 // check the header file for information about this widget
 
 /*
-  Textdomain "gtk"
+  Textdomain "gtk-pkg"
  */
 
 #define YUILogComponent "gtk"
