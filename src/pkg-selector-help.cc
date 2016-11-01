@@ -30,7 +30,7 @@ const char *pkg_help[] = {
 	_("<blockquote>A repository is a packages media; it can either be local (such as the "
 	"installation CD), or a remote internet server. You can find an utility to setup "
 	"repositories on the YaST control center, which can also be accessed via the "
-	"<b>Configuration > Repositories</b> menu item.</blockquote>"),
+	"<b>Configuration &gt; Repositories</b> menu item.</blockquote>"),
 	_("<h1>Usage</h1>"),
 	_("<h2>Install, Upgrade, Remove, Undo tab pages</h2>"
 	"<p>All packages are listed together unless you have selected a <i>status</i> filter "

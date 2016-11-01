@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  1 10:59:49 UTC 2016 - lslezak@suse.cz
+
+- Fixed unescaped ">" character in the help text (bsc#1007755)
+- 2.43.5
+
+-------------------------------------------------------------------
 Tue Oct 11 12:21:12 UTC 2016 - cwh@suse.com
 
 - Use own textdomain (gtk-pkg instead of gtk) (bsc#1004050)
