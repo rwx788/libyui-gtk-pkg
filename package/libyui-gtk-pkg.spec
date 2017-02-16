@@ -90,8 +90,8 @@ This package has very few dependencies.
 
 %build
 
-export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
-export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG"
+export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG -fPIC"
+export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG -fPIC"
 
 ./bootstrap.sh %{_prefix}
 
