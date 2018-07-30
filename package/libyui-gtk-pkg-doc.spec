@@ -17,10 +17,10 @@
 
 
 %define parent libyui-gtk-pkg
-%define so_version 8
+%define so_version 9
 
 Name:           %{parent}-doc
-Version:        2.43.5
+Version:        2.43.6
 Release:        0
 Source:         %{parent}-%{version}.tar.bz2
 
