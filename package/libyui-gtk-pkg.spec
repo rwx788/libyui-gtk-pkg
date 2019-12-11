@@ -17,21 +17,21 @@
 
 
 Name:           libyui-gtk-pkg
-Version:        2.43.6
+Version:        2.44.0
 Release:        0
 Source:         %{name}-%{version}.tar.bz2
 
-%define so_version 9
+%define so_version 11
 %define bin_name %{name}%{so_version}
 
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 2.8
 BuildRequires:  gcc-c++
 BuildRequires:  gtk3-devel
-BuildRequires:  libyui-devel >= 3.0.4
+BuildRequires:  libyui-devel >= 3.9.0
 BuildRequires:  pkg-config
 
-%define libyui_gtk_devel_version libyui-gtk-devel >= 2.42.0
+%define libyui_gtk_devel_version libyui-gtk-devel >= 2.46.0
 BuildRequires:  %{libyui_gtk_devel_version}
 %define libzypp_devel_version           libzypp-devel >= 13.0.0
 BuildRequires:  %{libzypp_devel_version}
@@ -104,14 +104,14 @@ cmake .. \
     -DDOC_DIR=%{_docdir} \
     -DLIB_DIR=%{_lib} \
     -DCMAKE_BUILD_TYPE=RELWITHDEBINFO \
-    -DENABLE_WERROR=OFF 
+    -DENABLE_WERROR=OFF
 %else
 cmake .. \
     -DPREFIX=%{_prefix} \
     -DDOC_DIR=%{_docdir} \
     -DLIB_DIR=%{_lib} \
     -DCMAKE_BUILD_TYPE=RELEASE \
-    -DENABLE_WERROR=OFF 
+    -DENABLE_WERROR=OFF
 %endif
 
 make %{?jobs:-j%jobs}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Dec 11 10:04:53 UTC 2019 - Rodion Iafarov <riafarov@suse.com>
+
+- Increase SO version to 11 (bsc#1132247)
+- 2.44.0
+
+-------------------------------------------------------------------
 Tue Aug 21 10:42:54 CEST 2018 - schubi@suse.de
 
 - Changed dir of COPYING file.
@@ -128,4 +134,3 @@ Tue Sep  4 14:35:49 CEST 2012 - tgoettlicher@suse.de
 Mon Jul 16 12:26:04 CEST 2012 - tgoettlicher@suse.de
 
 - new package
-
